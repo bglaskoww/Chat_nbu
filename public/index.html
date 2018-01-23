@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Chat TT index</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+          href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://unpkg.com/material-components-web@latest/dist/material-components-web.css">
+	<link rel="stylesheet"
+          href="css/style.css" />
+
+</head>
+<body style="background-color: #484848">
+
+<h1>ChatTT index</h1>
+<div class="container-fluid">
+
+    <div id="chatRoom" class="row">
+		<div id="usersList" class="col-4"></div>
+		<div id="chatWindow" class="col-8"></div>
+	</div>
+	<button onclick="redirect_to_login()" class="btn btn-primary float-right">Login?</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chatwindow.view.js"></script>
+<script src="/js/chattt.js"></script>
+<!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script> -->
+
+
+</body>
+</html>
