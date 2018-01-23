@@ -20,14 +20,14 @@ module.exports = {
 			//get users from db
 		var users = db.getUsers().then(function success(a) {
             var userEmailExists = false;
-            console.log('LOGVAM AAAAAAAAAAAAAAAAAAAAAAA');
-            console.log(a);
+            console.log('Registration method - chattt.js');
             a.forEach(function (user)
             {
-            	console.log('USER EMAIL: ' + user.email)
+            	console.log('USER EMAIL: ' + user.email + '               registration method - chattt.js')
                 if(user.email == encodeURIComponent(data.email))
                 {
                     userEmailExists = true;
+                    console.log('ima takuw mail = true - chattt.js')
                 }
             });
 
@@ -39,13 +39,13 @@ module.exports = {
             if (userEmailExists){
                 requiredFieldsOk = false;
             }
-            console.log('requiredFieldsOk: ', requiredFieldsOk);
+            console.log('Are following fields OK? chattt.js requiredFieldsOk: ', requiredFieldsOk);
             if (!requiredFieldsOk) {
                 return false;
             } else {
-                console.log('console logvam da widq metodite');
+                console.log('METHODS FROM SERVER chattt.js');
                 console.log(db);
-                console.log('console logvam da widq metodite');
+                console.log('METHODS FROM SERVER chattt.js');
                 db.createUser(data);
                 return true;
             }
@@ -54,22 +54,21 @@ module.exports = {
         });
         },
     login: function (data /*username pass*/) {
-        console.log('Logvam se !');
+        console.log('Logvam se ! - chattt.js');
         //get pass hash from db by username
         bcrypt.genSalt(11, function (err, salt) {
             bcrypt.hash(data.password, salt, function (err, hashedPassword) {
                 data.password = hashedPassword;
-                console.log('are be sled hasha' + data.password);
+                console.log('HASH' + data.password);
 
-                // bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
-                // res == true });
-
-                //if ok else
                 db.getUsers(data.email).then(function success(u) {
+
+                    
                     console.log('LOGGING FOUND USER: ' + u);
                     //compare data.password to hash
-					console.log('guz 2 ' + u.password);
-                    bcrypt.compare(data.password, u.password).then(function(res) {
+
+					console.log('USER PASSWORD ARRAY -> OBJECT ->  ' + u[0].password);
+                    bcrypt.compare(u[0].password,data.password).then(function(res) {
                         // res == true
                         if(res){
                             console.log('MINAVAAAAAAAAAAAAAAAAAAAAa');

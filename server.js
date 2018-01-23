@@ -28,7 +28,7 @@ app.use('/', express.static('./public', options));
 app.post('/login', function(req, res){
     console.log(req.body);
     var success = chat.login(req.body);
-    console.log('dsadsa', success);
+    console.log('app post login successfull', success);
     if(!success){
         // redirect to registration.html
         res.redirect('/login.html');
@@ -41,7 +41,7 @@ app.post('/login', function(req, res){
 app.post('/register', function(req, res){
     console.log(req.body);
     var success = chat.registration(req.body);
-    console.log('dsadsa', success);
+    console.log('app post reggister successfull', success);
     if(!success){
         // redirect to registration.html
         res.redirect('/registration.html');

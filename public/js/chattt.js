@@ -138,16 +138,16 @@ function updateUsersList() {
 	dom.innerHTML += '</div>';
 }
 
-function chatLogin() {
-	var nickname = document.getElementById('chatLogin').nickname.value;
-    var password = document.getElementById('chatLogin').password.value;
-    var email = document.getElementById('chatLogin').email.value;
+// function chatLogin() {
+// 	var nickname = document.getElementById('chatLogin').nickname.value;
+//     var password = document.getElementById('chatLogin').password.value;
+//     var email = document.getElementById('chatLogin').email.value;
 
-	if (nickname) {
-		console.log('Sending login', nickname, email);
-		socket.emit('login', {nick: nickname});
-	}
-}
+// 	if (nickname) {
+// 		console.log('Sending login', nickname, email);
+// 		socket.emit('login', {nick: nickname});
+// 	}
+// }
 
 jQuery('#chatLogin').on('submit', function(e) {
 	e.preventDefault();
@@ -188,7 +188,7 @@ jQuery('#loginForm').on('submit', function(e) {
             error: function(data) {
                 console.log(ret);
             },
-            //dataType: dataType
+            //dataType: dataType kakuw tip obekt wrushta 
         });
     }
 );
