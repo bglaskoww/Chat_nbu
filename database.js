@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 module.exports = (function() {
     return {
         createUser: function (userData) {
-            
+
             var password_now = userData.password;
 
             var usr = new User(

@@ -61,10 +61,9 @@ module.exports = {
                 data.password = hashedPassword;
                 console.log('HASH' + data.password);
 
-                db.getUsers(data.email).then(function success(u) {
+                db.getUser(data.email).then(function success(u) {
 
-                    
-                    console.log('LOGGING FOUND USER: ' + u);
+                    console.log('LOGGING FOUND USER: ' + u, Array.isArray(u));
                     //compare data.password to hash
 
 					console.log('USER PASSWORD ARRAY -> OBJECT ->  ' + u[0].password);
@@ -72,6 +71,8 @@ module.exports = {
                         // res == true
                         if(res){
                             console.log('MINAVAAAAAAAAAAAAAAAAAAAAa');
+                            return //token
+                            
                         }
                         else{
                             console.log('NE MINAVAAAAAAAAAAa');
