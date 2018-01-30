@@ -18,61 +18,85 @@ module.exports = {
 	registration: function(data /*username pass email gender*/) {
 			console.log('Pravq registraciq !');
 			//get users from db
-		var users = db.getUsers().then(function success(a) {
+		var users = db.getAllUsers().then(function success(BaseUser) {
+
             var userEmailExists = false;
-            console.log('Registration method - chattt.js');
-            a.forEach(function (user)
+
+            console.log('Registration method - front.js');
+            BaseUser.forEach(function (user) //
             {
-            	console.log('USER EMAIL: ' + user.email + '               registration method - chattt.js')
-                if(user.email == encodeURIComponent(data.email))
+                console.log('wlizam da wurtq dali ima takuw email ?');
+            	console.log('USER EMAIL: ' + user.email + '               registration method - front.js');
+            	console.log('data.email ' + data.email + ' proverka - ?');
+                if(user.email == data.email)
                 {
                     userEmailExists = true;
-                    console.log('ima takuw mail = true - chattt.js')
+                    console.log('ima takuw mail = true - front.js')
                 }
             });
 
-            var requiredFieldsOk = !!(data.nickname &&
-                data.password &&
-                data.email &&
-                data.gender &&
-                data.nickname);
-            if (userEmailExists){
-                requiredFieldsOk = false;
-            }
-            console.log('Are following fields OK? chattt.js requiredFieldsOk: ', requiredFieldsOk);
-            if (!requiredFieldsOk) {
-                return false;
-            } else {
-                console.log('METHODS FROM SERVER chattt.js');
-                console.log(db);
-                console.log('METHODS FROM SERVER chattt.js');
-                db.createUser(data);
-                return true;
-            }
-        }, function error (err) {
-			console.log(err);
-        });
+            /*HASHING PASS*/
+
+            bcrypt.genSalt(11, function (err, salt) {
+                bcrypt.hash(data.password, salt).then(function(hashedPassword) {
+                    console.log('istinksata praloa       ' + data.password);
+                    data.password = hashedPassword;
+                    console.log('parolata na toq w chattt.js predi da q nabiq w DB       ' + data.password);
+                    if(hashedPassword){
+                        console.log('PASH HASHA MINAVA');
+
+                        var requiredFieldsOk = !!(data.nickname &&
+                            // data.password &&
+                            data.email &&
+                            data.gender &&
+                            data.nickname);
+                        if (userEmailExists){
+                            requiredFieldsOk = false;
+                        }
+                        console.log('Are following fields OK? front.js requiredFieldsOk: ', requiredFieldsOk);
+                        if (!requiredFieldsOk) {
+                            return false;
+                        } else {
+                            console.log('METHODS FROM SERVER front.js');
+                            console.log(db);
+                            console.log('METHODS FROM SERVER front.js');
+                            console.log(data);
+                            db.createUser(data);
+                            return true;
+                        }
+                    }
+                    else{
+                        console.log('PASH HASHA MINAVA NE MINAVAAAAAAAAAAa');
+                    }
+                    console.log('tuka pasa e ' + data.password);
+                });
+            }, function error (err) {
+                    console.log(err);
+                });
+            }); /* golqmata skoba*/
         },
     login: function (data /*username pass*/) {
-        console.log('Logvam se ! - chattt.js');
+        console.log('Logvam se ! - front.js');
         //get pass hash from db by username
-        bcrypt.genSalt(11, function (err, salt) {
-            bcrypt.hash(data.password, salt, function (err, hashedPassword) {
-                data.password = hashedPassword;
-                console.log('HASH' + data.password);
 
-                db.getUser(data.email).then(function success(u) {
 
-                    console.log('LOGGING FOUND USER: ' + u, Array.isArray(u));
+        // bcrypt.genSalt(11, function (err, salt) {
+        //     bcrypt.hash(data.password, salt, function (err, hashedPassword) {
+
+                console.log('HASH       ' + data.password);
+
+                db.getUser(data.email).then(function success(user) {
+                    console.log('LOGGING FOUND USER: ' + user + ': USER ');
+                    console.log(user[0].password + '  ?? = ??' + data.password);
                     //compare data.password to hash
 
-					console.log('USER PASSWORD ARRAY -> OBJECT ->  ' + u[0].password);
-                    bcrypt.compare(u[0].password,data.password).then(function(res) {
+					console.log('USER PASSWORD ARRAY -> OBJECT ->  ' + user[0].password);
+                    bcrypt.compare(data.password,user[0].password).then(function(res) {
+                        console.log(res + ' ti pa na kwo si be ? :D ');
                         // res == true
                         if(res){
                             console.log('MINAVAAAAAAAAAAAAAAAAAAAAa');
-                            return //token
-                            
+
                         }
                         else{
                             console.log('NE MINAVAAAAAAAAAAa');
@@ -82,8 +106,8 @@ module.exports = {
                 }, function error (err) {
                     console.log(err);
                 });
-            });
-        });
+            // });
+        // });
     },
 	socketHandlers: {
 		login: function(socket, data /*{nick: 'Nickname'}*/) {
@@ -110,9 +134,7 @@ module.exports = {
 				USERS[data.to].emit('receiveMessage', { from: socket.nickname, msg: data.msg });
 				console.log(socket.nickname, ' to ', data.to, ': ', data.msg);
 			}
-		},
-		
+		}
 
-		
 	}
 };

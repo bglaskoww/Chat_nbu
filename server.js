@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
@@ -18,11 +18,12 @@ var options = {
 	setHeaders: function (res, path, stat) {
 		res.set('x-timestamp', Date.now())
 	}*/
-}
+};
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/login', express.static('./public', {index: 'login.html'}));
 app.use('/registration', express.static('./public', {index: 'registration.html'}));
+app.use('/chat', express.static('./public', {index: 'chat.html'}));
 app.use('/', express.static('./public', options));
 
 app.post('/login', function(req, res){
@@ -41,7 +42,7 @@ app.post('/login', function(req, res){
 app.post('/register', function(req, res){
     console.log(req.body);
     var success = chat.registration(req.body);
-    console.log('app post reggister successfull', success);
+    console.log('app post reggister successfull server.js', success);
     if(!success){
         // redirect to registration.html
         res.redirect('/registration.html');

@@ -6,7 +6,7 @@ module.exports = (function() {
     return {
         createUser: function (userData) {
 
-            var password_now = userData.password;
+            console.log('aaaaaaaaa password_now twa li nabivam ? database.js ' + userData.password);
 
             var usr = new User(
                 {
@@ -27,10 +27,10 @@ module.exports = (function() {
         getUser: function (email) {
             return User.find({email: email});
         },
-        getUsers: function () {
+        getAllUsers: function () {
             console.log('Function getUsers - database.js');
             return User.find();
-            console.log('Function getUsers - database.js');
+
 
         },
 
