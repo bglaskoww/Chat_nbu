@@ -5,6 +5,8 @@ var myName = null;
 var chatWith = null;
 var chatUsers = null;
 
+
+
 socket.on('hello', function (data) {
 	console.log('Server said hello!', data);
 });
@@ -186,3 +188,5 @@ function redirect_to_registration(){
 // function redirect_to_chat(){
 //     window.location = 'http://' + window.location.host + '/chat';
 // }
+
+
