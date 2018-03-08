@@ -5,8 +5,6 @@ var myName = null;
 var chatWith = null;
 var chatUsers = null;
 
-
-
 socket.on('hello', function (data) {
 	console.log('Server said hello!', data);
 });
@@ -134,7 +132,7 @@ function updateUsersList() {
 }
 
 
-jQuery('#chatLogin').on('submit', function(e) {
+jQuery('#ChatRegistration').on('submit', function(e) {
 	e.preventDefault();
 	jQuery.ajax({
 	  type: "POST",
@@ -145,7 +143,7 @@ jQuery('#chatLogin').on('submit', function(e) {
 	  	password: jQuery(this).find('#password').val(),
 	  	email: jQuery(this).find('#email').val(),
 	  	gender: jQuery(this).find('#gender').val(),
-
+	  	// token: jQuery(this).find('#token').val()
 	  },
 	  success: function(ret) {
 	  	console.log(ret);
@@ -165,13 +163,22 @@ jQuery('#loginForm').on('submit', function(e) {
             data: {
                 nickname: jQuery(this).find('#nickname').val(),
                 password: jQuery(this).find('#password').val(),
-                email: jQuery(this).find('#email').val()
+                email: jQuery(this).find('#email').val(),
+                token: jQuery(this).find('#token').val()
             },
-            success: function(ret) {
-                console.log(ret);
+            success: function(data) {
+
+            	window.location = 'http://' + window.location.host + '/chat';
+                console.log(' ret-a  ------- ', data);
+
+                const parsedData = JSON.parse(data);
+                console.log(' parsedData------- ', parsedData);
+                sessionStorage.setItem('username', parsedData.username);
+                sessionStorage.setItem('authToken', parsedData.token);
+
             },
-            error: function(data) {
-                console.log(ret);
+            error: function(error) {
+                console.log(error);
             }
             //dataType: dataType kakuw tip obekt wrushta 
         });

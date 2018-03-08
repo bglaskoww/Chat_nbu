@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Chat TT</title>
+    <!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="/materialize_bts/css/bootstrap.min.css" >
+<!-- Material Design Bootstrap -->
+<link href="/materialize_bts/css/mdb.min.css" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="/materialize_bts/css/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/my_style.css" />
+<link rel="stylesheet" href="/css/copypaste_style.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body style="background-color: #ebebeb">
+
+<h1>ChatTT</h1>
+<!-- <div class="container-fluid">
+    <form action="/login" method="POST" id="loginForm" class="form-inline">
+        <div class="form-group mx-sm-3">
+            <label for="nickname">Nickname</label>
+            <input type="text" name="nickname" 		placeholder="Your Nickname" required id="nickname" class="form-control form-control-lg"/>
+        </div>
+        <div class="form-group mx-sm-3">
+            <label for="email">email</label>
+            <input type="email" name="email" 		placeholder="Your Email" 	required id="email" 	class="form-control form-control-lg"/>
+        </div>
+        <div class="form-group mx-sm-3">
+            <label for="password">passw</label>
+            <input type="password" name="password" 	placeholder="Your Password" required id="password" class="form-control form-control-lg"/>
+        </div>
+
+        <input type="submit" class="btn btn-primary float-right" name="loginForm" value="Login">
+    </form>
+    <div style="margin-top:20px;">
+        <p>Dont have an Please <button onclick="redirect_to_registration()" class="btn btn-primary">Register</button></p>
+    </div>
+</div> -->
+
+<form action="/login" method="POST" id="loginForm" class="form-inline" style=" margin: 0 auto; ">
+    <div class="col-md-6 mb-5 ">
+                <div class="card mx-xl-5 ">
+                    <div class="card-body">
+
+                        <!--Header-->
+                        <div class="form-header text-center">
+                            <h3><i class="fa fa-comments"></i> Login:</h3>
+                        </div>
+
+                        <!--  input Nickname -->
+                        <div class="md-form font-weight-light">
+                            <i class="fa fa-id-card prefix grey-text"></i>
+                            <input type="text" name="nickname" placeholder="Your Nickname" required id="nickname" class="form-control form-control-lg"/>
+                            <label for="nickname" class="">Your Nickname</label>
+                        </div>
+
+                        <!--  input email -->
+                        <div class="md-form font-weight-light">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="email" name="email"        placeholder="Your Email"    required id="email"     class="form-control form-control-lg"  />
+                            <label for="email" class="">Your email</label>
+                        </div>
+                        <!--  input password -->
+                        <div class="md-form font-weight-light">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" name="password"  placeholder="Your Password" required id="password" class="form-control form-control-lg">
+                            <label for="password" class="">Your password</label>
+                        </div>
+
+                    </div>
+
+                        <div class="text-center mt-4">
+                            <p>Dont have an Account? Go to <button onclick="redirect_to_registration()" class="btn btn-primary">Registration</button></p>
+                            <!-- <input type="submit" class="btn btn-light-blue waves-effect waves-light" name="loginForm" value="Login"> -->
+                            <input type="submit" class="btn btn-primary float-right" name="loginForm" value="Login">
+                        </div>
+
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="options font-weight-light">
+                            <p>Not a member? <a href="#">Sign Up</a></p>
+                            <p>Forgot <a href="#">Password?</a></p>
+                        </div>
+                    </div>
+
+                </div>
+                
+              </div>
+</form>
+
+
+<!--JQuery-->
+<script type="text/javascript" src="../materialize_bts/js/jquery-3.2.1.min.js"></script>
+<!--<script src="../node_modules/socket.io/lib/socket.js"></script>-->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="/js/chatwindow.view.js"></script>
+<script src="/js/front.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/materialize_bts/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/materialize_bts/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/materialize_bts/js/mdb.min.js"></script>
+<!-- Add Google Maps -->
+<script src="/js/google_js.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA960DWFRp3In9Jo2RYdmwbb6CVkyclGP8&callback=myMap"></script>
+<!--<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>-->
+
+</body>
+</html>
