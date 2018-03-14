@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>chat aloal</title>
+	<title>ChatZoo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="/materialize_bts/css/bootstrap.min.css" >
+	<!-- Material Design Bootstrap -->
+	<link href="/materialize_bts/css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="/materialize_bts/css/style.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/css/my_style.css" />
+	<link rel="stylesheet" href="/css/copypaste_style.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<h1> hello dashboard !</h1>
+
+
+    <div id="chatRoom" class="row">
+		<div id="usersList" class="col-4"></div>
+		<div id="chatWindow" class="col-8"></div>
+    </div>
+
+
+	<!--JQuery-->
+	<script type="text/javascript" src="../materialize_bts/js/jquery-3.2.1.min.js"></script>
+	<!--<script src="../node_modules/socket.io/lib/socket.js"></script>-->
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script src="/js/chatwindow.view.js"></script>
+	<script src="/js/front.js"></script>
+
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="/materialize_bts/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="/materialize_bts/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="/materialize_bts/js/mdb.min.js"></script>
+
 </body>
 </html>
-
-<script type="text/javascript" src="materialize_bts/js/jquery-3.2.1.min.js"></script>

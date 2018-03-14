@@ -15,9 +15,10 @@ function usersList(socket) {
 }
 
 module.exports = {
-	
+	usersList: usersList,
 	socketHandlers: {
 		login: function(socket, data /*{nick: 'Nickname'}*/) {
+// TODO: Use the tokens here to ckeck who the user is
 			if (data.nick && !USERS[data.nick]) {
 				USERS[data.nick] = socket;
 				socket.nickname = data.nick;

@@ -7,17 +7,22 @@ var chatUsers = null;
 
 socket.on('hello', function (data) {
 	console.log('Server said hello!', data);
+// TODO: Use the tokens here - send the token and receive username from the serverd
+	var savedUsername = window.sessionStorage.getItem('username');
+	if (savedUsername) {
+		socket.emit('login', {nick: savedUsername});
+	}
 });
 socket.on('disconnect', function (data) {
 	console.log('Goodbye server');
-	document.getElementById('chatLogin').style.display = 'flex';
+	//document.getElementById('chatLogin').style.display = 'flex';
 	document.getElementById('chatRoom').style.display = 'none';
 });
 socket.on('loginSuccess', function (data) {
 	console.log('Login success!', data);
 	myName = data.nick;
 	window.sessionStorage.setItem('user_info', data);
-	document.getElementById('chatLogin').style.display = 'none';
+	//document.getElementById('chatLogin').style.display = 'none';
 	document.getElementById('chatRoom').style.display = 'flex';
 });
 
