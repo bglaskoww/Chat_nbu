@@ -16,7 +16,7 @@ var options = {
 	dotfiles: 'ignore',
 	etag: false,
 	extensions: ['htm', 'html'],
-	index: 'registration.html',
+	index: 'copypaste.html',
 	maxAge: '1d',
 	redirect: false/*,
 	setHeaders: function (res, path, stat) {
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/login', express.static('./public/html', {index: 'login.html'}));
 app.use('/registration', express.static('./public/html', {index: 'registration.html'}));
 app.use('/chat', express.static('./public/html', {index: 'chat.html'}));
-app.use('/', express.static('./public/', options)); //html ?
+app.use('/', express.static('./public/html', options)); //html ?
 
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
