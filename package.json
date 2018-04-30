@@ -11,7 +11,8 @@
     "jwt-simple": "^0.5.1",
     "material-components-web": "^0.27.0",
     "mongoose": "^5.0.0-rc2",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "sweetalert": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {

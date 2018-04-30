@@ -1,12 +1,12 @@
-<!doctype html>
+<!--<!doctype html>
 <html lang="en">
 <head>
 	<title>Chat TT</title>
-	<!-- Required meta tags -->
+	<!-- Required meta tags
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
+	<!-- Bootstrap CSS
 	<link rel="stylesheet"
           href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet"
@@ -46,15 +46,110 @@
     	<input type="submit" class="btn btn-primary float-right" name="registration" value="Registration">
 	</form>
 	<div style="margin-top:20px;">
-		<p>Already have an account ? Please <button onclick="redirect_to_login()" class="btn btn-primary">Login</button></p>
+		<p>Already have an account ? Please <button onclick="redirect_to_index()" class="btn btn-primary">Login</button></p>
 
 	</div>
 </div>
 
-<script type="text/javascript" src="materialize_bts/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../materialize_bts/js/jquery-3.2.1.min.js"></script>
+<!-- <script src="../node_modules/socket.io/lib/socket.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/chatwindow.view.js"></script>
-<script src="/js/front.js"></script>
+
+<script src="../js/chatwindow.view.js"></script>
+<script src="../js/front.js"></script>
+
+
+</body>
+</html>
+
+-->
+
+
+<!-- -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ChatZoo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../Login_html/images/icons/favicon.ico"/>
+
+	<link rel="stylesheet" type="text/css" href="../Login_html/css/util.css"> <!--  resolutions etc -->
+	<link rel="stylesheet" type="text/css" href="../Login_html/css/main.css"> <!--	main css for buttons and etc -->
+	<link rel="stylesheet" type="text/css" href="../css/option.css"> <!--	main css for buttons and etc -->
+
+	<!--===============================================================================================-->
+
+</head>
+<body>
+
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<form action="/register" method="POST" id="ChatRegistration" class="login100-form validate-form">
+					<span class="login100-form-title p-b-30">
+						ChatZoo Registration
+					</span>
+
+				<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user nickname">
+					<input type="text" name="name" placeholder="Your Name" required id="name" class="input100"/>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user nickname">
+					<input type="text" name="nickname" placeholder="Your Nickname" required id="nickname" class="input100"/>
+					<span class="focus-input100"></span>
+				</div>
+
+
+
+				<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type Email">
+					<input type="email" name="email"        placeholder="Your Email"    required id="email"     class="input100"  />
+
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+					<input type="password" name="password"  placeholder="Your Password" required id="password" class="input100">
+
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-login100-form-btn">
+					<input type="submit" class="login100-form-btn" name="loginForm" value="Register">
+				</div>
+
+				<div class="w-full text-center p-t-27 p-b-90">
+						<span class="txt1">
+							Forgot
+						</span>
+
+					<a href="#" class="txt2">
+						User name / password?
+					</a>
+
+
+				</div>
+
+				<div class="w-full text-center ">
+					<p>Don't have an Account? <button onclick="redirect_to_index()" class="txt3">Sign Up</button></p>
+				</div>
+			</form>
+			<div class="login100-more" style="background-image: url('../Login_html/images/bg-01.jpg');"></div>
+
+		</div>
+	</div>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+<script type="text/javascript" src="../materialize_bts/js/jquery-3.2.1.min.js"></script>
+<!-- <script src="../node_modules/socket.io/lib/socket.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="../js/chatwindow.view.js"></script>
+<script src="../js/front.js"></script>
 
 </body>
 </html>

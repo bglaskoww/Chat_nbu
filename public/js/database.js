@@ -1,6 +1,6 @@
 var User = require('./user.js').User; // izpolzwam metod user ot user.js,kudeto moga da pipam samo po red 18
                                         // (kudeto e konekciqta),bez da moga da pipam dr
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 
 module.exports = (function() {
     return {
@@ -30,8 +30,6 @@ module.exports = (function() {
         getAllUsers: function () {
             console.log('Function getUsers - database.js');
             return User.find();
-
-
         },
 
         authorize: function (username, password) {

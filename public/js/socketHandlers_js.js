@@ -1,4 +1,4 @@
-var UserHandler = require('../../server.js');
+// var UserHandler = require('../../server.js');
 // var bcrypt = require('bcrypt');
 // var db = require('./database.js');
 var USERS = {

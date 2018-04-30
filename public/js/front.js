@@ -15,14 +15,12 @@ socket.on('hello', function (data) {
 });
 socket.on('disconnect', function (data) {
 	console.log('Goodbye server');
-	//document.getElementById('chatLogin').style.display = 'flex';
 	document.getElementById('chatRoom').style.display = 'none';
 });
 socket.on('loginSuccess', function (data) {
 	console.log('Login success!', data);
 	myName = data.nick;
-	window.sessionStorage.setItem('user_info', data);
-	//document.getElementById('chatLogin').style.display = 'none';
+	window.sessionStorage.setItem('user_info', data); // infoto koi kwo otkogo za kogo i tn data
 	document.getElementById('chatRoom').style.display = 'flex';
 });
 
@@ -136,7 +134,6 @@ function updateUsersList() {
 	dom.innerHTML += '</div>';
 }
 
-
 jQuery('#ChatRegistration').on('submit', function(e) {
 	e.preventDefault();
 	jQuery.ajax({
@@ -174,10 +171,8 @@ jQuery('#loginForm').on('submit', function(e) {
             success: function(data) {
 
             	window.location = 'http://' + window.location.host + '/chat';
-                console.log(' ret-a  ------- ', data);
 
                 const parsedData = JSON.parse(data);
-                console.log(' parsedData------- ', parsedData);
                 sessionStorage.setItem('username', parsedData.username);
                 sessionStorage.setItem('authToken', parsedData.token);
 
@@ -185,11 +180,9 @@ jQuery('#loginForm').on('submit', function(e) {
             error: function(error) {
                 console.log(error);
             }
-            //dataType: dataType kakuw tip obekt wrushta 
         });
     }
 );
-
 
 function redirect_to_login(){
 	window.location = 'http://' + window.location.host + '/login';
@@ -197,8 +190,9 @@ function redirect_to_login(){
 function redirect_to_registration(){
     window.location = 'http://' + window.location.host + '/registration';
 }
-// function redirect_to_chat(){
-//     window.location = 'http://' + window.location.host + '/chat';
-// }
+
+function redirect_to_index(){
+    window.location = 'http://' + window.location.host + '/index';
+}
 
 

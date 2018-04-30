@@ -10,7 +10,7 @@
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="/materialize_bts/css/bootstrap.min.css" >
 <!-- Material Design Bootstrap -->
-<link href="/materialize_bts/css/mdb.min.css" rel="stylesheet">
+<link href="../materialize_bts/css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="/materialize_bts/css/style.css" rel="stylesheet">
 
@@ -51,11 +51,10 @@
     <div class="w3-display-middle" style="white-space:nowrap;">
         <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MY WEBSITE LOGO</span>
     <div id="first_text_buttons" class="flex-center flex-row p_index">
-        <p class="flex-center flex-row"><button onclick="redirect_to_login()" class="btn btn-deep-purple float-right"><strong>Login?</strong></button>
+        <p class="flex-center flex-row"><button onclick="redirect_to_index()" class="btn btn-deep-purple float-right"><strong>Login?</strong></button>
         <p class="flex-center flex-row"><button onclick="redirect_to_registration()" class="btn btn-deep-purple float-right"><strong>Registration?</strong>
         </button></p>
     </div>
-
     </div>
 </div>
 
@@ -86,6 +85,7 @@
                     </div>
                 </div>
                 <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                <a onclick="sweetAlert('Greetings', 'Hi', 'success');"><i class="fa fa-fw fa-plus"></i>Streams</a>
                 <button class="w3-button w3-black w3-right w3-section" type="submit">
                     <i class="fa fa-paper-plane"></i> SEND MESSAGE
                 </button>
@@ -121,7 +121,7 @@
 
 <script src="/js/chatwindow.view.js"></script>
 <script src="/js/front.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="/materialize_bts/js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
