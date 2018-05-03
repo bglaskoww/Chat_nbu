@@ -33,6 +33,8 @@ app.use('/index', express.static('./public/html', {index: 'index.html'}));
 app.use('/chat', express.static('./public/html', {index: 'chat.html'}));
 app.use('/', express.static('./public/', options)); //html ?
 
+
+
 app.post('/index', function(req, res){
     var loginPromise = login_js.login(req.body);
     loginPromise.then((data) => {
@@ -42,8 +44,6 @@ app.post('/index', function(req, res){
 })
     // console.log(a + 'WWWWWWWWWWWWWWWWWWWWW');
 });
-
-
 
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
@@ -56,19 +56,26 @@ app.post('/login', function(req, res){
 });
 app.post('/register', function(req, res){
     console.log(req.body);
-    var success = registration_js.registration(req.body);
-    // console.log(registration_js.registration(req.body) + ' bbbbbbbbbb');
-    if (registration_js.registration(req.body)){
+    var successPromise = registration_js.registration(req.body);
 
-	    console.log('app post reggister successfull server.js', success);
-    }
-    if(!success){
-        // redirect to registration.html
-        res.redirect('html/registration.html');
-    } else {
 
-        res.redirect('html//login.html');
-    }
+
+    successPromise.then((data) => {
+        console.log('345345345');
+            res.end(JSON.stringify(data));
+             console.log(data);
+
+                if(data === false){
+                                       res.status(200).jsonp({ error: 'succ' });
+
+                    // redirect to registration.html
+                    // res.redirect('html/registration.html');
+                } else {                    res.status(422).jsonp({ error: 'failllllllllllll' });
+
+                    // res.redirect('html//login.html');
+                }
+
+    })
 
 });
 io.on('connection', function (socket) {

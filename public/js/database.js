@@ -6,8 +6,6 @@ module.exports = (function() {
     return {
         createUser: function (userData) {
 
-            console.log('aaaaaaaaa password_now twa li nabivam ? database.js ' + userData.password);
-
             var usr = new User(
                 {
                     name: userData.name,

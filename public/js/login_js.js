@@ -6,7 +6,6 @@ var swal = require('sweetalert');
 module.exports = {
 
 login: function (data /*username pass*/) {
-    
 
         console.log('Logvam se ! - login.js');
 
@@ -15,7 +14,7 @@ login: function (data /*username pass*/) {
                         if(res){
                             console.log('MINAVAAAAAAAAAAAAAAAAAAAAa ---------- ', res);
                             return {
-                                token: 'token' + user[0].password + user[0].email,
+                                token: 'token' , /* + user[0].password + user[0].email */
                                 username: user[0].email
                             };
                         }

@@ -5,6 +5,7 @@ var myName = null;
 var chatWith = null;
 var chatUsers = null;
 
+
 socket.on('hello', function (data) {
 	console.log('Server said hello!', data);
 // TODO: Use the tokens here - send the token and receive username from the serverd
@@ -135,6 +136,7 @@ function updateUsersList() {
 }
 
 jQuery('#ChatRegistration').on('submit', function(e) {
+
 	e.preventDefault();
 	jQuery.ajax({
 	  type: "POST",
@@ -144,14 +146,17 @@ jQuery('#ChatRegistration').on('submit', function(e) {
 	  	nickname: jQuery(this).find('#nickname').val(),
 	  	password: jQuery(this).find('#password').val(),
 	  	email: jQuery(this).find('#email').val(),
-	  	gender: jQuery(this).find('#gender').val(),
+	  	gender: jQuery(this).find('#gender').val()
 	  	// token: jQuery(this).find('#token').val()
 	  },
 	  success: function(ret) {
+	  	swal('SUCCESSSSS');
 	  	console.log(ret);
 	  },
 		error: function(data) {
-        console.log(ret);
+            swal('ERRORRRR');
+
+            // console.log(ret);
             }
 	  //dataType: dataType
 	});
@@ -169,9 +174,7 @@ jQuery('#loginForm').on('submit', function(e) {
                 token: jQuery(this).find('#token').val()
             },
             success: function(data) {
-
             	window.location = 'http://' + window.location.host + '/chat';
-
                 const parsedData = JSON.parse(data);
                 sessionStorage.setItem('username', parsedData.username);
                 sessionStorage.setItem('authToken', parsedData.token);
