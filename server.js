@@ -50,7 +50,7 @@ app.post('/login', function(req, res){
         loginPromise.then((data) => {
         console.log('resolve ', data);
         res.end(JSON.stringify(data));
-        res.redirect('/chat.html');
+        // res.redirect('/chat.html');
     })
 	// console.log(a + 'WWWWWWWWWWWWWWWWWWWWW');
 });
@@ -62,16 +62,18 @@ app.post('/register', function(req, res){
 
     successPromise.then((data) => {
         console.log('345345345');
-            res.end(JSON.stringify(data));
+            // res.end(JSON.stringify(data));
              console.log(data);
+             console.log(typeof data);
 
                 if(data === false){
-                                       res.status(200).jsonp({ error: 'succ' });
+                    res.status(422).jsonp({ error: 'failllllllllllll' });
+                                       
 
                     // redirect to registration.html
                     // res.redirect('html/registration.html');
-                } else {                    res.status(422).jsonp({ error: 'failllllllllllll' });
-
+                } else {                    
+                    res.status(200).jsonp({ error: 'succ' });
                     // res.redirect('html//login.html');
                 }
 

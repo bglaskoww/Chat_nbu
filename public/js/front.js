@@ -150,8 +150,11 @@ jQuery('#ChatRegistration').on('submit', function(e) {
 	  	// token: jQuery(this).find('#token').val()
 	  },
 	  success: function(ret) {
-	  	swal('SUCCESSSSS');
-	  	console.log(ret);
+
+		swal("Your imaginary file is safe!").then((willDelete) => {
+		  redirect_to_login();
+		});  
+
 	  },
 		error: function(data) {
             swal('ERRORRRR');
@@ -187,8 +190,19 @@ jQuery('#loginForm').on('submit', function(e) {
     }
 );
 
+jQuery('#logout').on('click', function(e) {
+        e.preventDefault();
+
+       	sessionStorage.removeItem('username');
+		sessionStorage.removeItem('authToken');
+		window.location = 'http://' + window.location.host + '/index';
+
+
+    }
+);
+
 function redirect_to_login(){
-	window.location = 'http://' + window.location.host + '/login';
+	window.location = 'http://' + window.location.host + '/index';
 }
 function redirect_to_registration(){
     window.location = 'http://' + window.location.host + '/registration';
@@ -197,5 +211,10 @@ function redirect_to_registration(){
 function redirect_to_index(){
     window.location = 'http://' + window.location.host + '/index';
 }
+
+function redirect_to_chat(){
+    window.location = 'http://' + window.location.host + '/chat';
+}
+
 
 
