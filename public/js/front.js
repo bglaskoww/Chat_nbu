@@ -185,6 +185,8 @@ jQuery('#loginForm').on('submit', function(e) {
             },
             error: function(error) {
                 console.log(error);
+
+                swal(error.responseJSON.error);
             }
         });
     }

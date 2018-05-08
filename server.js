@@ -47,8 +47,14 @@ app.post('/index', function(req, res){
 
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
-        loginPromise.then((data) => {
+
+    loginPromise.then(data => {
+        if (data.success === false) {
+            return res.status(422).jsonp({ error: data.message });
+        }
+
         console.log('resolve ', data);
+
         res.end(JSON.stringify(data));
         // res.redirect('/chat.html');
     })
