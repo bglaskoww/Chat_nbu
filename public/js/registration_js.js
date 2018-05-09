@@ -29,13 +29,13 @@ module.exports = {
                                 message: 'evala'
                             };
                         }
-                    });
-                }).catch(data => {
+                    }).catch(data => {
                         return {
                             success: false,
                             message: 'General error'
                         };
                     });
+                })
         }); /* golqmata skoba*/
     }
 };
