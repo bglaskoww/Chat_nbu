@@ -33,7 +33,7 @@ module.exports = {
 				delete USERS[socket.nickname];
 				delete socket.nickname;
 
-				console.log('Goodbye', socket.nickname);
+				console.log('Have a nice day! ');
 				usersList(socket);
 			}
 		},

@@ -6,7 +6,7 @@ module.exports = {
         console.log('Logvam se ! - login.js');
 
         return db.getUser(data.email).then(function success(user) {
-            if (!user.length) {
+            if (!user.length) { 
                 return {
                     success: false,
                     message: 'Wrong email'
@@ -15,17 +15,12 @@ module.exports = {
 
             return bcrypt.compare(data.password,user[0].password).then(function(res) {
                 if(res){
-                    console.log('MINAVAAAAAAAAAAAAAAAAAAAAa ---------- ', res);
-
                     return {
                         success: true,
-                        token: 'token' , /* + user[0].password + user[0].email */
+                        token: 'token', /* + user[0].password + user[0].email */
                         username: user[0].email
                     };
                 }
-
-                console.log('NE MINAVAAAAAAAAAAa');
-
                 return {
                     success: false,
                     message: 'Wrong password'

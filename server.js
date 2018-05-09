@@ -38,54 +38,33 @@ app.use('/', express.static('./public/', options)); //html ?
 app.post('/index', function(req, res){
     var loginPromise = login_js.login(req.body);
     loginPromise.then((data) => {
-        console.log('resolve ', data);
-    res.end(JSON.stringify(data));
-    res.redirect('/chat.html');
-})
-    // console.log(a + 'WWWWWWWWWWWWWWWWWWWWW');
+        res.end(JSON.stringify(data));
+        res.redirect('/chat.html');
+    })
 });
 
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
-
     loginPromise.then(data => {
         if (data.success === false) {
             return res.status(422).jsonp({ error: data.message });
         }
-
         console.log('resolve ', data);
-
         res.end(JSON.stringify(data));
-        // res.redirect('/chat.html');
     })
-	// console.log(a + 'WWWWWWWWWWWWWWWWWWWWW');
 });
-app.post('/register', function(req, res){
-    console.log(req.body);
-    var successPromise = registration_js.registration(req.body);
-
-
-
-    successPromise.then((data) => {
-        console.log('345345345');
-            // res.end(JSON.stringify(data));
-             console.log(data);
-             console.log(typeof data);
-
-                if(data === false){
-                    res.status(422).jsonp({ error: 'failllllllllllll' });
-                                       
-
-                    // redirect to registration.html
-                    // res.redirect('html/registration.html');
-                } else {                    
-                    res.status(200).jsonp({ error: 'succ' });
-                    // res.redirect('html//login.html');
+    app.post('/register', function(req, res){
+        console.log(req.body);
+        var successPromise = registration_js.registration(req.body);
+        successPromise.then((data) => {
+                if (data.success === false) {
+                    return res.status(422).jsonp({ error: data.message });
                 }
+                    console.log('resolve ', data);
+                    res.end(JSON.stringify(data));
+        })
+    });
 
-    })
-
-});
 io.on('connection', function (socket) {
 	for (let k in socketHandlers_js.socketHandlers) {
 		socket.on(k, function(data) {

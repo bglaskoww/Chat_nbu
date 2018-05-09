@@ -136,64 +136,56 @@ function updateUsersList() {
 }
 
 jQuery('#ChatRegistration').on('submit', function(e) {
-
 	e.preventDefault();
-	jQuery.ajax({
-	  type: "POST",
-	  url: '/register',
-	  data: {
-	  	name: jQuery(this).find('#name').val(),
-	  	nickname: jQuery(this).find('#nickname').val(),
-	  	password: jQuery(this).find('#password').val(),
-	  	email: jQuery(this).find('#email').val(),
-	  	gender: jQuery(this).find('#gender').val()
-	  	// token: jQuery(this).find('#token').val()
-	  },
-	  success: function(ret) {
-
-		swal("Your imaginary file is safe!").then((willDelete) => {
-		  redirect_to_login();
-		});  
-
-	  },
-		error: function(data) {
-            swal('ERRORRRR');
-
-            // console.log(ret);
-            }
-	  //dataType: dataType
+		jQuery.ajax({
+			type: "POST",
+			url: '/register',
+			data: {
+			name: jQuery(this).find('#name').val(),
+			nickname: jQuery(this).find('#nickname').val(),
+			password: jQuery(this).find('#password').val(),
+			email: jQuery(this).find('#email').val(),
+			gender: jQuery(this).find('#gender').val()
+			// token: jQuery(this).find('#token').val()
+		},
+			success: function(ret) {
+				swal("Your imaginary file is safe!").then((willDelete) => {
+					redirect_to_login();
+				});  
+			},
+			error: function(data) {
+				swal(error.responseJSON.error);
+			}
 	});
-}
-);
+});
 jQuery('#loginForm').on('submit', function(e) {
-        e.preventDefault();
-        jQuery.ajax({
-            type: "POST",
-            url: '/login',
-            data: {
-                nickname: jQuery(this).find('#nickname').val(),
-                password: jQuery(this).find('#password').val(),
-                email: jQuery(this).find('#email').val(),
-                token: jQuery(this).find('#token').val()
-            },
-            success: function(data) {
-            	window.location = 'http://' + window.location.host + '/chat';
-                const parsedData = JSON.parse(data);
-                sessionStorage.setItem('username', parsedData.username);
-                sessionStorage.setItem('authToken', parsedData.token);
+	e.preventDefault();
+		jQuery.ajax({
+			type: "POST",
+			url: '/login',
+			data: {
+			nickname: jQuery(this).find('#nickname').val(),
+			password: jQuery(this).find('#password').val(),
+			email: jQuery(this).find('#email').val(),
+			token: jQuery(this).find('#token').val()
+			},
+			success: function(data) {
+				window.location = 'http://' + window.location.host + '/chat';
+				const parsedData = JSON.parse(data);
+				sessionStorage.setItem('username', parsedData.username);
+				sessionStorage.setItem('authToken', parsedData.token);
+				swal("great", success);
 
-            },
-            error: function(error) {
-                console.log(error);
-
-                swal(error.responseJSON.error);
-            }
-        });
-    }
-);
+			},
+			error: function(error) {
+				console.log(error);
+				swal(error.responseJSON.error);
+			}
+		});
+});
 
 jQuery('#logout').on('click', function(e) {
-        e.preventDefault();
+	e.preventDefault();
 
        	sessionStorage.removeItem('username');
 		sessionStorage.removeItem('authToken');
