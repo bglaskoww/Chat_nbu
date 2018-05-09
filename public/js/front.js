@@ -149,7 +149,7 @@ jQuery('#ChatRegistration').on('submit', function(e) {
 			// token: jQuery(this).find('#token').val()
 		},
 			success: function(ret) {
-				swal("Your imaginary file is safe!").then((willDelete) => {
+				swal(JSON.parse(ret).message).then(function (willDelete) {
 					redirect_to_login();
 				});  
 			},

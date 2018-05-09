@@ -46,6 +46,7 @@ app.post('/index', function(req, res){
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
     loginPromise.then(data => {
+         console.log(typeof(data));
         if (data.success === false) {
             return res.status(422).jsonp({ error: data.message });
         }
@@ -56,7 +57,11 @@ app.post('/login', function(req, res){
     app.post('/register', function(req, res){
         console.log(req.body);
         var successPromise = registration_js.registration(req.body);
-        successPromise.then((data) => {
+        console.log(typeof successPromise);
+        console.log(successPromise + 'aaaaaaaaaaaaaaa');
+        successPromise.then(function (data)  {
+            console.log(data);
+            console.log(typeof data);
                 if (data.success === false) {
                     return res.status(422).jsonp({ error: data.message });
                 }
