@@ -153,7 +153,7 @@ jQuery('#ChatRegistration').on('submit', function(e) {
 					redirect_to_login();
 				});  
 			},
-			error: function(data) {
+			error: function(error) {
 				swal(error.responseJSON.error);
 			}
 	});
