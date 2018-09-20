@@ -1,6 +1,5 @@
 var bcrypt = require('bcrypt');
 var db = require('./database.js');
-var swal = require('sweetalert');
 
 module.exports = {
 
@@ -8,61 +7,52 @@ module.exports = {
         return db.getUser(data.email).then(function (user) {
             data.gender = 1;
 
-            var requiredFieldsOk = !!(data.nickname &&
-                data.email &&
-                data.gender &&
-                data.nickname);
-console.log(111111111111111)
+            // var requiredFieldsOk =
+            //     !!(
+            //     data.nickname &&
+            //     data.email &&
+            //     data.gender &&
+            //     data.nickname
+            //     );
             if (user.length) {
-                return{
+                return {
                     success: false,
                     message: 'Email already Taken'
                 }
             }
 
-
                return bcrypt.genSalt(11).then(function (err, salt) {
-                   console.log(data.password );
-                   console.log(salt );
-
-                   console.log('99999999999999999999999999');
-
+                   // console.log(data.password );
+                   // console.log(salt );
 
                    return bcrypt.hash(data.password, 11).then(function(hashedPassword) {
-                       // return {
-                       //     success: false,
-                       //     message: 'kuuuuuuuuuuuuuuuuuuur'
-                       // };
-                       console.log('baba ti ');
-
-                       console.log(hashedPassword);
-                       console.log(data.password);
-                        console.log(data);
                        data.password = hashedPassword;
                        if(hashedPassword){
                            db.createUser(data);
                            return {
                                success: true,
-                               message: 'evala'
+                               message: 'Successfully created new registration!',
+                               message2:'Transferring to Login section!'
+
                            };
                        }
 
                        return {
                            success: false,
-                           message: 'kur'
+                           message: 'Problem while making registration!'
                        };
 
                    }).catch(function (data) {
                        return {
                            success: false,
-                           message: 'General errorrppppppppppp'
+                           message: 'General in bcrypt.hash method'
                        };
                    }); // catch
                })
         }).catch(function (data) {
             return {
                 success: false,
-                message: 'General error222222222'
+                message: 'General in global getUser method'
             };
     }); /* golqmata skoba*/
     }

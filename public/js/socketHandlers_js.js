@@ -2,8 +2,9 @@
 // var bcrypt = require('bcrypt');
 // var db = require('./database.js');
 var USERS = {
-	/* "Krum": 'Krum',
-	 * "Bobby": 'Bobby'*/
+	/* "Stefan": 'Stefan',
+	 * "Bobby": 'Bobby'
+	 * "Maria: Maria*/
 };
 
 function usersList(socket) {
@@ -18,7 +19,6 @@ module.exports = {
 	usersList: usersList,
 	socketHandlers: {
 		login: function(socket, data /*{nick: 'Nickname'}*/) {
-// TODO: Use the tokens here to ckeck who the user is
 			if (data.nick && !USERS[data.nick]) {
 				USERS[data.nick] = socket;
 				socket.nickname = data.nick;

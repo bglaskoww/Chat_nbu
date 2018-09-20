@@ -5,10 +5,8 @@ var myName = null;
 var chatWith = null;
 var chatUsers = null;
 
-
 socket.on('hello', function (data) {
 	console.log('Server said hello!', data);
-// TODO: Use the tokens here - send the token and receive username from the serverd
 	var savedUsername = window.sessionStorage.getItem('username');
 	if (savedUsername) {
 		socket.emit('login', {nick: savedUsername});
@@ -149,7 +147,7 @@ jQuery('#ChatRegistration').on('submit', function(e) {
 			// token: jQuery(this).find('#token').val()
 		},
 			success: function(ret) {
-				swal(JSON.parse(ret).message).then(function (willDelete) {
+				swal(JSON.parse(ret).message2).then(function (willDelete) {
 					redirect_to_login();
 				});  
 			},
@@ -170,15 +168,23 @@ jQuery('#loginForm').on('submit', function(e) {
 			token: jQuery(this).find('#token').val()
 			},
 			success: function(data) {
-				window.location = 'http://' + window.location.host + '/chat';
+				// window.location = 'http://' + window.location.host + '/chat';
 				const parsedData = JSON.parse(data);
 				sessionStorage.setItem('username', parsedData.username);
 				sessionStorage.setItem('authToken', parsedData.token);
-				swal("great", success);
+                swal({
+                    title: "Great!",
+                    text: "You've logging in seconds.",
+                    type: "success"
+
+                }).then(function() {
+                    window.location = 'http://' + window.location.host + '/chat';
+                    console.log('butona baca');
+                });
 
 			},
 			error: function(error) {
-				console.log(error);
+				// console.log(error);
 				swal(error.responseJSON.error);
 			}
 		});
@@ -186,12 +192,9 @@ jQuery('#loginForm').on('submit', function(e) {
 
 jQuery('#logout').on('click', function(e) {
 	e.preventDefault();
-
        	sessionStorage.removeItem('username');
 		sessionStorage.removeItem('authToken');
 		window.location = 'http://' + window.location.host + '/index';
-
-
     }
 );
 

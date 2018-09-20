@@ -1,6 +1,5 @@
 var User = require('./user.js').User; // izpolzwam metod user ot user.js,kudeto moga da pipam samo po red 18
                                         // (kudeto e konekciqta),bez da moga da pipam dr
-// var bcrypt = require('bcrypt');
 
 module.exports = (function() {
     return {
