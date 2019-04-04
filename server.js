@@ -1,11 +1,9 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var swal = require('sweetalert');
+var express     = require('express');
+var app         = express();
+var bodyParser  = require('body-parser');
+var server      = require('http').Server(app);
+var io          = require('socket.io')(server);
 
-// var chat = require('./chattt.js');
 var registration_js = require('./public/js/registration_js.js');
 var login_js = require('./public/js/login_js.js');
 
@@ -18,12 +16,9 @@ var options = {
 	dotfiles: 'ignore',
 	etag: false,
 	extensions: ['htm', 'html'],
-	index: 'html/copypaste.html',
+	index: 'html/landing.html',
 	maxAge: '1d',
-	redirect: false/*,
-	setHeaders: function (res, path, stat) {
-		res.set('x-timestamp', Date.now())
-	}*/
+	redirect: false
 };
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,8 +27,6 @@ app.use('/registration', express.static('./public/html', {index: 'registration.h
 app.use('/index', express.static('./public/html', {index: 'index.html'}));
 app.use('/chat', express.static('./public/html', {index: 'chat.html'}));
 app.use('/', express.static('./public/', options)); //html ?
-
-
 
 app.post('/index', function(req, res){
     var loginPromise = login_js.login(req.body);
@@ -46,7 +39,6 @@ app.post('/index', function(req, res){
 app.post('/login', function(req, res){
     var loginPromise = login_js.login(req.body);
     loginPromise.then(data => {
-         console.log(typeof(data));
         if (data.success === false) {
             return res.status(422).jsonp({ error: data.message });
         }
@@ -57,15 +49,10 @@ app.post('/login', function(req, res){
     app.post('/register', function(req, res){
         console.log(req.body);
         var successPromise = registration_js.registration(req.body);
-        console.log(typeof successPromise);
-        console.log(successPromise + 'aaaaaaaaaaaaaaa');
         successPromise.then(function (data)  {
-            console.log(data);
-            console.log(typeof data);
                 if (data.success === false) {
                     return res.status(422).jsonp({ error: data.message });
                 }
-                    console.log('resolve ', data);
                     res.end(JSON.stringify(data));
         })
     });
@@ -80,6 +67,6 @@ io.on('connection', function (socket) {
 		socketHandlers_js.socketHandlers.logout(socket, {});
 	});
 
-	socket.emit('hello', { app: 'ChatTT app here!' });
+	socket.emit('hello', { app: 'Swift Chat app here!' });
 });
 
