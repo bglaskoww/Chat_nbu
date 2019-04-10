@@ -1,20 +1,20 @@
-var bcrypt = require('bcrypt');
-var db = require('./database.js');
+var bcrypt  = require('bcrypt');
+var db      = require('./database.js');
 
 module.exports = {
-    login: function (data /*username pass*/) {
-        console.log('Logvam se ! - login.js');
+    login: (data /*username pass*/) => {
+        console.log('Logging! - login.js');
 
         return db.getUser(data.email).then(function success(user) {
-            if (!user.length) { 
+            if (!user.length) {
                 return {
                     success: false,
                     message: 'Wrong email!'
                 };
             }
 
-            return bcrypt.compare(data.password,user[0].password).then(function(res){
-                if(res){
+            return bcrypt.compare(data.password, user[0].password).then((res) =>{
+                if (res) {
                     return {
                         success: true,
                         token: 'token' + user[0].email,
@@ -26,7 +26,7 @@ module.exports = {
                     message: 'Wrong password!'
                 };
             });
-        }).catch(function (willDelete) {
+        }).catch((data) => {
             return {
                 success: false,
                 message: 'General error in getUser method!'

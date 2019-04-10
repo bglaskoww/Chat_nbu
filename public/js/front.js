@@ -1,9 +1,9 @@
 'use strict';
 
-var socket = io.connect('//:8080');
-var myName = null;
-var chatWith = null;
-var chatUsers = null;
+var socket      = io.connect('//:8080');
+var myName      = null;
+var chatWith    = null;
+var chatUsers   = null;
 
 socket.on('hello', function (data) {
     console.log('Server said hello!', data);
@@ -112,11 +112,11 @@ function updateUsersList() {
     var dom = document.getElementById('usersList');
     dom.innerHTML = '<div class="list-group">';
     chatUsers.forEach(function (user) {
-        if (user == myName) {
+        if (user === myName) {
             dom.innerHTML += '<div class="list-group-item list-group-item-action disabled">'
                 + user + '</div>';
         } else {
-            if (user == chatWith) {
+            if (user === chatWith) {
                 dom.innerHTML += '<a href="#" onclick="startChatWith(\'' + user + '\'); return false;" class="list-group-item list-group-item-action active">'
                     + user + '</a>';
             } else {
@@ -142,12 +142,12 @@ jQuery('#ChatRegistration').on('submit', function (e) {
             name: jQuery(this).find('#name').val(),
             nickname: jQuery(this).find('#nickname').val(),
             password: jQuery(this).find('#password').val(),
+            confirmPassword: jQuery(this).find('#confirmPassword').val(),
             email: jQuery(this).find('#email').val(),
             gender: jQuery(this).find('#gender').val()
-            // token: jQuery(this).find('#token').val()
         },
         success: function (ret) {
-            swal(JSON.parse(ret).message2).then(function (willDelete) {
+            swal(JSON.parse(ret).message2).then(function () {
                 redirect_to_login();
             });
         },
@@ -168,7 +168,6 @@ jQuery('#loginForm').on('submit', function (e) {
             token: jQuery(this).find('#token').val()
         },
         success: function (data) {
-            // window.location = 'http://' + window.location.host + '/chat';
             const parsedData = JSON.parse(data);
             sessionStorage.setItem('username', parsedData.username);
             sessionStorage.setItem('authToken', parsedData.token);
@@ -179,7 +178,6 @@ jQuery('#loginForm').on('submit', function (e) {
 
             }).then(function () {
                 window.location = 'http://' + window.location.host + '/chat';
-                console.log('butona baca');
             });
 
         },
@@ -208,10 +206,3 @@ function redirect_to_registration() {
 function redirect_to_index() {
     window.location = 'http://' + window.location.host + '/index';
 }
-
-function redirect_to_chat() {
-    window.location = 'http://' + window.location.host + '/chat';
-}
-
-
-

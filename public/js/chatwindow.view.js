@@ -12,23 +12,3 @@ chatwindow_template = {
 	</div>`
     }
 };
-
-chatlogin_template = {
-    chat_template2: function () {
-        return `<div class="form-group mx-sm-3">
-                    <label for="nickname">Nickname</label>
-                    <input type="text" name="nickname" placeholder="your nickname" required id="nickname" class="form-control form-control-lg"  />
-                </div>
-                <div class="form-group mx-sm-3">
-                    <label for="email">email</label>
-                    <input type="email" name="email" placeholder="your nickname" required id="email" class="form-control form-control-lg"  />
-                </div>
-                <div class="form-group mx-sm-3">
-                    <label for="password">passw</label>
-                    <input type="password" name="password" placeholder="your nickname" required id="password" class="form-control form-control-lg"  />
-                </div>`
-    }
-};
-
-
-
