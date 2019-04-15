@@ -2,19 +2,49 @@
 <html>
 <head>
 	<title>ChatZoo</title>
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="../css/landing_style.css" />
+
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../css/landing_style.css" />
     <link rel="icon" type="image/png" href="../css/images/favicon.ico"/>
-	<script type="text/javascript" src="../bootstrap/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.bundle.js"></script>
+
+    <link rel="icon" type="image/png" href="../css/images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="../css/util.css"> <!--  resolutions etc -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css"> <!--	main css for buttons and etc -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--===============================================================================================-->
+
 </head>
-<body>
-    <div id="chatRoom" class="row">
-        <button id="logout">Logout</button>
-        <div id="usersList" class="col-4"></div>
-        <div id="chatWindow" class="col-8"></div>
+<body class="body-class">
+
+<div class="w3-top w3-white">
+    <div class="w3-bar" id="myNavbar">
+        <a href="/" class="w3-bar-item w3-button">HOME</a>
+        <a href="http://bg.glaskova.eu/page2.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i>ABOUT ME REFERENCE</a>
+        <a href="http://github.com/bglaskoww/" class="w3-bar-item w3-button"><i class="fa fa-th"></i>GITHUB PORTFOLIO</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
     </div>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="../js/chatwindow.view.js"></script>
-	<script src="../js/front.js"></script>
+</div>
+    <div class="container">
+
+
+    <!--<div id="chatRoom" style="margin-top: 5%">-->
+    <div id="chatRoom" style="align-content: center">
+        <div id="usersList" class="col-4"></div>
+        <div id="chatWindow" class="col-6"></div>
+    </div>
+    <button class="btn-warning float-right" id="logout">Logout</button>
+
+    </div>
+<script type="text/javascript" src="../materialize_bts/js/jquery-3.2.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/chatwindow.view.js"></script>
+<script src="../js/front.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
 </body>
 </html>
